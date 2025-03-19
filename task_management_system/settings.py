@@ -80,6 +80,8 @@ WSGI_APPLICATION = 'task_management_system.wsgi.application'
 AWS_REGION = "your region" #"us-east-1"
 AWS_LAMBDA_NAME = "lambda function name"# "test_func"
 
+AWS_REGION = "us-east-1"
+AWS_LAMBDA_NAME =  "test_func"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',

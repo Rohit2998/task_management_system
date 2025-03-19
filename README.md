@@ -62,6 +62,12 @@ docker-compose exec web python manage.py createsuperuser
 
 We use an AWS Lambda function to log notifications when a task is marked as completed. The `lambda_function.py` contains the following logic:
 
+UPDATE in Settings :
+
+- AWS_REGION = "your region" #"us-east-1"
+- AWS_LAMBDA_NAME = "lambda function name"# "test_func"
+
+
 ### -Note : Please add you aws creds in docker compose for successful integeration
 
 
