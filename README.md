@@ -41,6 +41,8 @@ docker-compose exec web python manage.py createsuperuser
 ```
 
 ## API Endpoints
+### POSTMAN COLLECTION
+- import the Postman collection from the `postman_collection.json` file in the root directory to ease the testing of API endpoints.
 ### User Authentication
 - **Register User:** `POST http://127.0.0.1:8000/register/`
 - **Get Token:** `POST http://127.0.0.1:8000/api/token/`
