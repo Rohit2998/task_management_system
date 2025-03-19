@@ -62,6 +62,9 @@ docker-compose exec web python manage.py createsuperuser
 
 We use an AWS Lambda function to log notifications when a task is marked as completed. The `lambda_function.py` contains the following logic:
 
+### -Note : Please add you aws creds in docker compose for successful integeration
+
+
 ```python
 import json
 
@@ -79,11 +82,34 @@ def lambda_handler(event, context):
 ### How the Lambda Logs Work:
 1. When a task is updated to "completed," the `perform_update` method in `TaskViewSet` triggers the Lambda function.
 2. The Lambda function receives the task details and logs a message.
-3. You can view the logs in the AWS Lambda console under **Monitoring → CloudWatch Logs**.
+3. You can view the logs in the AWS Lambda console under **Monitoring → CloudWatch 
+4. On successfull integeration you recieve see logs in lambda like below
+
+2025-03-19T20:46:57.954Z
+INIT_START Runtime Version: python:3.13.v13 Runtime Version ARN: arn:aws:lambda:us-east-1::runtime:b881cbc9a10a8bcb3def9d9e9fe38f922bb36510a1d92d4ce85cf2a899eeabd8
+
+2025-03-19T20:46:58.069Z
+START RequestId: 5b729abf-d773-4285-ae41-c7a0a69fa0a3 Version: $LATEST
+2025-03-19T20:46:58.070Z
+
+### Lambda Notification: Task 'Task is Still Pending' assigned to test1 is now completed.
+
+2025-03-19T20:46:58.072Z
+END RequestId: 5b729abf-d773-4285-ae41-c7a0a69fa0a3
+2025-03-19T20:46:58.083Z
+REPORT RequestId: 5b729abf-d773-4285-ae41-c7a0a69fa0a3 Duration: 2.04 ms Billed Duration: 3 ms Memory Size: 128 MB Max Memory Used: 30 MB Init Duration: 112.03 ms
+No newer events at this moment. 
+Auto retry paused.
+ 
+Resume
+ 
+
+Logs**.
+
 
 To test locally, invoke the Lambda function using the AWS CLI:
 ```
-aws lambda invoke --function-name my_lambda_function --payload '{"task_title": "Example Task", "assigned_to": "John Doe"}' output.json
+aws lambda invoke --function-name my_lambda_function --payload '{"task_title": "Example Task", "assigned_to": 2}' output.json
 ```
 
 This will execute the function and store the response in `output.json`.

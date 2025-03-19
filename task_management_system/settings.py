@@ -77,6 +77,9 @@ WSGI_APPLICATION = 'task_management_system.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+AWS_REGION = "your region" #"us-east-1"
+AWS_LAMBDA_NAME = "lambda function name"# "test_func"
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',

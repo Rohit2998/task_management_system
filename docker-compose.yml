@@ -30,8 +30,12 @@ services:
       - redis
     environment:
       - DEBUG=True
+      - DATABASE_URL=postgres://myuser:mypassword@db:5432/mydb
+      - REDIS_URL=redis://redis:6379/0
+      - AWS_ACCESS_KEY_ID=your-access-key
+      - AWS_SECRET_ACCESS_KEY=your-access-key
+      - AWS_DEFAULT_REGION=your-region
 
-      
     ports:
       - "8000:8000"
     volumes:
