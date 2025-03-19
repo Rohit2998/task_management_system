@@ -170,9 +170,6 @@ REST_FRAMEWORK = {
     }
 }
 
-AWS_REGION = "us-east-1"
-AWS_LAMBDA_NAME = "TaskCompletionNotifier"
-AWS_LAMBDA_NAME = "test_func"
 
 
 # Password validation
