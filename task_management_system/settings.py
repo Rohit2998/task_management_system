@@ -169,9 +169,7 @@ REST_FRAMEWORK = {
         'user': '50/min'
     }
 }
-# AKIATF34IEFQYTIXMKGF
 
-# oPQEAcsGvbI0RWl9UvJuXNhqaVjP/glhcsBP2G1Q
 AWS_REGION = "us-east-1"
 AWS_LAMBDA_NAME = "TaskCompletionNotifier"
 AWS_LAMBDA_NAME = "test_func"
