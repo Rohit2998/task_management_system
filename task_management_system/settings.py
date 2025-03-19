@@ -74,62 +74,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'task_management_system.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-# docker run --name some-postgres -e POSTGRES_
-# docker run --name some-postgres -e POSTGRES_PASSWORD=password -d postgres
-# PS D:\rohit\SDE_2_Assignment\task_management_system> docker run --name postgres -e POSTGRES_PASSWORD=password -p 5431:5432 -d postgres
-# PS D:\rohit\SDE_2_Assignment\task_management_system> docker exec -it postgres  psql -U postgres
-#  .\env\Scripts\activate
-
-
-# python manage.py createsuperuser
-# testuser
-# password
-# In [1]: from rest_framework.authtoken.models import Token
-
-# In [2]: Token.objects.filter()
-# Out[2]: <QuerySet []>
-
-# In [3]: from django.contrib.auth.models import User
-
-# In [4]: User.objects.all()
-# Out[4]: <QuerySet [<User: testuser>]>
-
-# In [5]: user = User.objects.all().first()
-
-# In [6]: Token.objects.get_or_create(user=user)
-# Out[6]: (<Token: 9fbdb311d98bed76c40f59b7136d8b29dfe07f5e>, True)
-
-
-# docker run -d --name redis-container -p 6379:6379 redis
-# pip install redis django-redis
-# (env) PS D:\rohit\SDE_2_Assignment\task_management_system> docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redis-container
-# API Endpoints:
-# - POST /tasks/ (Create task)
-# - GET /tasks/ (List tasks, filter by ?status=pending)
-# - GET /tasks/{id}/ (Retrieve task)
-# - PUT /tasks/{id}/ (Update task)
-# - DELETE /tasks/{id}/ (Delete task)
-# - POST /tasks/{id}/mark_completed/ (Mark as completed & trigger lambda)
-
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'task_management',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'password',
-    #     'HOST': 'localhost',
-    #     'PORT': '5431',
-    # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'db-name',  # Database name from docker-compose.yml
@@ -139,19 +87,7 @@ DATABASES = {
         'PORT': '5432',  # Default PostgreSQL port
     }
 }
-# CACHES = {
-#     "default": {
-#         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-#         # "LOCATION": "redis://172.17.0.4:6379",  # Replace with Redis container IP
-#         # "LOCATION": "redis://redis-container:6379",
-#         # "LOCATION": "redis://host.docker.internal:6379",
-#         "LOCATION": "redis://127.0.0.1:6379",  # Use localhost if Redis is exposed
 
-
-
-
-#     }
-# }
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
