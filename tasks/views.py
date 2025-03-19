@@ -1,20 +1,11 @@
-from rest_framework import viewsets, permissions, throttling
-
-# from django.core.cache import cache
-from .models import Task
-
-# from serializers import TaskSerializer
-from tasks.serializers import TaskSerializer
-from rest_framework.decorators import action
+from rest_framework import viewsets, permissions, throttling, filters
 from rest_framework.response import Response
-
-# from tasks.utils import simulate_lambda
+from rest_framework.decorators import action
 from django.core.cache import cache
-from rest_framework import status
 from django.shortcuts import get_object_or_404
-from tasks.utils import trigger_lambda
-
-cache.clear()
+from .models import Task
+from .serializers import TaskSerializer
+from .utils import trigger_lambda  # Util
 
 
 class TaskViewSet(viewsets.ModelViewSet):

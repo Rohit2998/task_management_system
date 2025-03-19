@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-        'rest_framework',
-
+     'rest_framework',
     'rest_framework.authtoken',
     'users',
     'tasks'
@@ -80,8 +79,6 @@ WSGI_APPLICATION = 'task_management_system.wsgi.application'
 AWS_REGION = "your region" #"us-east-1"
 AWS_LAMBDA_NAME = "lambda function name"# "test_func"
 
-AWS_REGION = "us-east-1"
-AWS_LAMBDA_NAME =  "test_func"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -107,7 +104,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'user': '50/min'
+        'user': '5/min'
     }
 }
 
