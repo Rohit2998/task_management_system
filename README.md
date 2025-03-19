@@ -55,6 +55,38 @@ docker-compose exec web python manage.py createsuperuser
 ## AWS Lambda Integration
 - When a task is marked as completed, an AWS Lambda function is triggered to log a notification.
 
+
+## AWS Lambda Notification Logs
+
+We use an AWS Lambda function to log notifications when a task is marked as completed. The `lambda_function.py` contains the following logic:
+
+```python
+import json
+
+def lambda_handler(event, context):
+    task_title = event.get("task_title", "Unknown Task")
+    assigned_to = event.get("assigned_to", "Unassigned")
+    
+    message = f"Task '{task_title}' assigned to {assigned_to} is now completed."
+    
+    print(f"Lambda Notification: {message}")
+
+    return {"statusCode": 200, "body": json.dumps({"message": message})}
+```
+
+### How the Lambda Logs Work:
+1. When a task is updated to "completed," the `perform_update` method in `TaskViewSet` triggers the Lambda function.
+2. The Lambda function receives the task details and logs a message.
+3. You can view the logs in the AWS Lambda console under **Monitoring → CloudWatch Logs**.
+
+To test locally, invoke the Lambda function using the AWS CLI:
+```
+aws lambda invoke --function-name my_lambda_function --payload '{"task_title": "Example Task", "assigned_to": "John Doe"}' output.json
+```
+
+This will execute the function and store the response in `output.json`.
+
+
 ## Design Considerations
 - **Dockerized setup** ensures consistency across environments.
 - **Rate-limiting and caching** optimize performance.
