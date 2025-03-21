@@ -107,19 +107,6 @@ REPORT RequestId: 5b729abf-d773-4285-ae41-c7a0a69fa0a3 Duration: 2.04 ms Billed 
 No newer events at this moment. 
 Auto retry paused.
  
-Resume
- 
-
-Logs**.
-
-
-To test locally, invoke the Lambda function using the AWS CLI:
-```
-aws lambda invoke --function-name my_lambda_function --payload '{"task_title": "Example Task", "assigned_to": 2}' output.json
-```
-
-This will execute the function and store the response in `output.json`.
-
 
 ## Design Considerations
 - **Dockerized setup** ensures consistency across environments.
